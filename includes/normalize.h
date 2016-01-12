@@ -6,7 +6,7 @@
 /*   By: qfremeau <qfremeau@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/07 17:19:11 by qfremeau          #+#    #+#             */
-/*   Updated: 2016/01/07 17:24:28 by qfremeau         ###   ########.fr       */
+/*   Updated: 2016/01/12 17:02:34 by qfremeau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include "../lib/libft.h"
 
 // ************************************************************************** //
 // Macro for True or False
@@ -27,8 +28,9 @@
 #define TRUE 1
 #define FALSE 0
 
-// Macro for read function
-#define BUFSIZE 4095
+// Macro for reading file
+#define UPDATE "r"
+#define CREATE "w"
 
 // Macro for printf colors
 #define KRED  "\x1B[31m"
@@ -38,7 +40,34 @@
 #define RESET "\033[0m"
 
 // ************************************************************************** //
+// Debug conditionnal macros
+// Uncomment #define _MACRO to choose how to debug
+#define _DEBUG
+
+#ifdef _DEBUG
+#define IFDEBUG(x) x
+#else
+#define IFDEBUG(x)
+#endif
+
+#define _TRACE
+
+#ifdef _TRACE
+#define IFTRACE(x) x
+#else
+#define IFTRACE(x)
+#endif
+
+#define _ERROR
+
+#ifdef _ERROR
+#define IFERROR(x) x
+#else
+#define IFERROR(x)
+#endif
+
+// ************************************************************************** //
 // Preproccesors read_file.c
-int		read_file(char const *file, char *buf)
+int		read_file(char const *file, int nb);
 
 #endif
